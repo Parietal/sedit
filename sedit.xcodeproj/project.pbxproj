@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C0519ACA19B5513900EA36E0 /* ExtendedKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */; };
+		C0927C5119B8768900123554 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0927C5019B8768900123554 /* PreferencesViewController.swift */; };
+		C0927C5319B880C800123554 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = C0927C5219B880C800123554 /* readme.txt */; };
+		C0E240B519B32344007EB93B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240B419B32344007EB93B /* AppDelegate.swift */; };
+		C0E240BC19B32344007EB93B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0E240BB19B32344007EB93B /* Images.xcassets */; };
+		C0E240C819B32344007EB93B /* seditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240C719B32344007EB93B /* seditTests.swift */; };
+		C0E240D219B32401007EB93B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240D119B32401007EB93B /* RootViewController.swift */; };
+		C0E240D419B32469007EB93B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240D319B32469007EB93B /* MainViewController.swift */; };
+		C0E240D619B32EE3007EB93B /* TextEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240D519B32EE3007EB93B /* TextEditViewController.swift */; };
+		C0E240D819B33B21007EB93B /* String+SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240D719B33B21007EB93B /* String+SHA256.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0E240C219B32344007EB93B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0E240A719B32344007EB93B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0E240AE19B32344007EB93B;
+			remoteInfo = sedit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedKeyboard.swift; sourceTree = "<group>"; };
+		C0927C5019B8768900123554 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		C0927C5219B880C800123554 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		C0E240AF19B32344007EB93B /* sedit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sedit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0E240B319B32344007EB93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0E240B419B32344007EB93B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C0E240BB19B32344007EB93B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C0E240C119B32344007EB93B /* seditTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = seditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0E240C619B32344007EB93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0E240C719B32344007EB93B /* seditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seditTests.swift; sourceTree = "<group>"; };
+		C0E240D119B32401007EB93B /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		C0E240D319B32469007EB93B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C0E240D519B32EE3007EB93B /* TextEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditViewController.swift; sourceTree = "<group>"; };
+		C0E240D719B33B21007EB93B /* String+SHA256.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SHA256.swift"; sourceTree = "<group>"; };
+		C0E240DB19B385E3007EB93B /* sedit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sedit-Bridging-Header.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0E240AC19B32344007EB93B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E240BE19B32344007EB93B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C0E240A619B32344007EB93B = {
+			isa = PBXGroup;
+			children = (
+				C0E240B119B32344007EB93B /* sedit */,
+				C0E240C419B32344007EB93B /* seditTests */,
+				C0E240B019B32344007EB93B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0E240B019B32344007EB93B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0E240AF19B32344007EB93B /* sedit.app */,
+				C0E240C119B32344007EB93B /* seditTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0E240B119B32344007EB93B /* sedit */ = {
+			isa = PBXGroup;
+			children = (
+				C0E240B419B32344007EB93B /* AppDelegate.swift */,
+				C0E240D119B32401007EB93B /* RootViewController.swift */,
+				C0E240D319B32469007EB93B /* MainViewController.swift */,
+				C0E240D519B32EE3007EB93B /* TextEditViewController.swift */,
+				C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */,
+				C0E240D719B33B21007EB93B /* String+SHA256.swift */,
+				C0927C5019B8768900123554 /* PreferencesViewController.swift */,
+				C0E240BB19B32344007EB93B /* Images.xcassets */,
+				C0927C5219B880C800123554 /* readme.txt */,
+				C0E240B219B32344007EB93B /* Supporting Files */,
+				C0E240DB19B385E3007EB93B /* sedit-Bridging-Header.h */,
+			);
+			path = sedit;
+			sourceTree = "<group>";
+		};
+		C0E240B219B32344007EB93B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0E240B319B32344007EB93B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C0E240C419B32344007EB93B /* seditTests */ = {
+			isa = PBXGroup;
+			children = (
+				C0E240C719B32344007EB93B /* seditTests.swift */,
+				C0E240C519B32344007EB93B /* Supporting Files */,
+			);
+			path = seditTests;
+			sourceTree = "<group>";
+		};
+		C0E240C519B32344007EB93B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C0E240C619B32344007EB93B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0E240AE19B32344007EB93B /* sedit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E240CB19B32344007EB93B /* Build configuration list for PBXNativeTarget "sedit" */;
+			buildPhases = (
+				C0E240AB19B32344007EB93B /* Sources */,
+				C0E240AC19B32344007EB93B /* Frameworks */,
+				C0E240AD19B32344007EB93B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = sedit;
+			productName = sedit;
+			productReference = C0E240AF19B32344007EB93B /* sedit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C0E240C019B32344007EB93B /* seditTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E240CE19B32344007EB93B /* Build configuration list for PBXNativeTarget "seditTests" */;
+			buildPhases = (
+				C0E240BD19B32344007EB93B /* Sources */,
+				C0E240BE19B32344007EB93B /* Frameworks */,
+				C0E240BF19B32344007EB93B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0E240C319B32344007EB93B /* PBXTargetDependency */,
+			);
+			name = seditTests;
+			productName = seditTests;
+			productReference = C0E240C119B32344007EB93B /* seditTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0E240A719B32344007EB93B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Nerry Kitazato";
+				TargetAttributes = {
+					C0E240AE19B32344007EB93B = {
+						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
+					C0E240C019B32344007EB93B = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = C0E240AE19B32344007EB93B;
+					};
+				};
+			};
+			buildConfigurationList = C0E240AA19B32344007EB93B /* Build configuration list for PBXProject "sedit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0E240A619B32344007EB93B;
+			productRefGroup = C0E240B019B32344007EB93B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0E240AE19B32344007EB93B /* sedit */,
+				C0E240C019B32344007EB93B /* seditTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0E240AD19B32344007EB93B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0927C5319B880C800123554 /* readme.txt in Resources */,
+				C0E240BC19B32344007EB93B /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E240BF19B32344007EB93B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0E240AB19B32344007EB93B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0E240D419B32469007EB93B /* MainViewController.swift in Sources */,
+				C0519ACA19B5513900EA36E0 /* ExtendedKeyboard.swift in Sources */,
+				C0927C5119B8768900123554 /* PreferencesViewController.swift in Sources */,
+				C0E240D619B32EE3007EB93B /* TextEditViewController.swift in Sources */,
+				C0E240D219B32401007EB93B /* RootViewController.swift in Sources */,
+				C0E240D819B33B21007EB93B /* String+SHA256.swift in Sources */,
+				C0E240B519B32344007EB93B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E240BD19B32344007EB93B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0E240C819B32344007EB93B /* seditTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0E240C319B32344007EB93B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0E240AE19B32344007EB93B /* sedit */;
+			targetProxy = C0E240C219B32344007EB93B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C0E240C919B32344007EB93B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0E240CA19B32344007EB93B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0E240CC19B32344007EB93B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = sedit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "sedit/sedit-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C0E240CD19B32344007EB93B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = sedit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "sedit/sedit-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		C0E240CF19B32344007EB93B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = seditTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sedit.app/sedit";
+			};
+			name = Debug;
+		};
+		C0E240D019B32344007EB93B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = seditTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sedit.app/sedit";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0E240AA19B32344007EB93B /* Build configuration list for PBXProject "sedit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E240C919B32344007EB93B /* Debug */,
+				C0E240CA19B32344007EB93B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E240CB19B32344007EB93B /* Build configuration list for PBXNativeTarget "sedit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E240CC19B32344007EB93B /* Debug */,
+				C0E240CD19B32344007EB93B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E240CE19B32344007EB93B /* Build configuration list for PBXNativeTarget "seditTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E240CF19B32344007EB93B /* Debug */,
+				C0E240D019B32344007EB93B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0E240A719B32344007EB93B /* Project object */;
+}
