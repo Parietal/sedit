@@ -22,16 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary) -> Bool {
         
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = RootViewController(rootViewController: MainViewController(path: nil))
-        self.window?.makeKeyAndVisible()
-        
         let files = NSFileManager.defaultManager().contentsOfDirectoryAtPath(AppDelegate.applicationDocumentsDirectory.path!, error: nil)
         if files?.count == 0 {
             let srcPath = NSBundle.mainBundle().pathForResource("readme", ofType: "txt")
             let data = String.stringWithContentsOfFile(srcPath!, encoding: NSUTF8StringEncoding, error: nil)
             data?.writeToFile(AppDelegate.applicationDocumentsDirectory.path!.stringByAppendingPathComponent("readme.txt"), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         }
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = RootViewController(rootViewController: MainViewController(path: nil))
+        self.window?.makeKeyAndVisible()
         
         return true
     }
