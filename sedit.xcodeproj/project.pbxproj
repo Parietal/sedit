@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C008BDB419CC75FE005FEF71 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C008BDB319CC75FE005FEF71 /* Images.xcassets */; };
+		C008BDE419CC765D005FEF71 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C008BDE319CC765D005FEF71 /* LaunchScreen.xib */; };
 		C0519ACA19B5513900EA36E0 /* ExtendedKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */; };
 		C0927C5119B8768900123554 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0927C5019B8768900123554 /* PreferencesViewController.swift */; };
 		C0927C5319B880C800123554 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = C0927C5219B880C800123554 /* readme.txt */; };
 		C0E240B519B32344007EB93B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240B419B32344007EB93B /* AppDelegate.swift */; };
-		C0E240BC19B32344007EB93B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0E240BB19B32344007EB93B /* Images.xcassets */; };
 		C0E240C819B32344007EB93B /* seditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240C719B32344007EB93B /* seditTests.swift */; };
 		C0E240D219B32401007EB93B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240D119B32401007EB93B /* RootViewController.swift */; };
 		C0E240D419B32469007EB93B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E240D319B32469007EB93B /* MainViewController.swift */; };
@@ -30,13 +31,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C008BDB319CC75FE005FEF71 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C008BDE319CC765D005FEF71 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedKeyboard.swift; sourceTree = "<group>"; };
 		C0927C5019B8768900123554 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C0927C5219B880C800123554 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		C0E240AF19B32344007EB93B /* sedit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sedit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E240B319B32344007EB93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0E240B419B32344007EB93B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C0E240BB19B32344007EB93B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C0E240C119B32344007EB93B /* seditTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = seditTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E240C619B32344007EB93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0E240C719B32344007EB93B /* seditTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = seditTests.swift; sourceTree = "<group>"; };
@@ -93,10 +95,11 @@
 				C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */,
 				C0E240D719B33B21007EB93B /* String+SHA256.swift */,
 				C0927C5019B8768900123554 /* PreferencesViewController.swift */,
-				C0E240BB19B32344007EB93B /* Images.xcassets */,
 				C0927C5219B880C800123554 /* readme.txt */,
 				C0E240B219B32344007EB93B /* Supporting Files */,
 				C0E240DB19B385E3007EB93B /* sedit-Bridging-Header.h */,
+				C008BDB319CC75FE005FEF71 /* Images.xcassets */,
+				C008BDE319CC765D005FEF71 /* LaunchScreen.xib */,
 			);
 			path = sedit;
 			sourceTree = "<group>";
@@ -212,7 +215,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0927C5319B880C800123554 /* readme.txt in Resources */,
-				C0E240BC19B32344007EB93B /* Images.xcassets in Resources */,
+				C008BDE419CC765D005FEF71 /* LaunchScreen.xib in Resources */,
+				C008BDB419CC75FE005FEF71 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +348,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = sedit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -352,6 +358,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "sedit/sedit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -363,6 +370,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = sedit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -371,6 +380,7 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "sedit/sedit-Bridging-Header.h";
 			};
 			name = Release;
