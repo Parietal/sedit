@@ -24,7 +24,9 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "contentSizeCategoryDidCHange:", name: UIContentSizeCategoryDidChangeNotification, object: nil)
+
+
     }
     
     init(path: String) {
@@ -45,8 +47,6 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         
         self.view.backgroundColor = UIColor.whiteColor()
 
-        let fontBody = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        
         textView = UITextView(frame: rectForTextView(self.view.bounds))
         textView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         textView.editable = true
@@ -54,15 +54,14 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         textView.backgroundColor = UIColor.whiteColor()
         textView.textColor = UIColor.blackColor()
         textView.delegate = self
-        textView.font = UIFont(name: "Menlo", size: fontBody.pointSize)
         textView.text = loadFile()
         textView.selectedRange = NSRange(location: 0, length: 0)
         textView.inputAccessoryView = ExtendedKeyboard(textView: textView)
         //textView.keyboardAppearance = .Dark
         self.view.addSubview(textView)
+        setFont()
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "navigationItemActionClick:")
-        
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -83,6 +82,11 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
     
     // MARK:
 
+    func setFont() {
+        let fontBody = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        textView.font = UIFont(name: "Menlo", size: fontBody.pointSize)
+    }
+    
     func truncateString(src: String) -> String {
         let str = NSString(string: src)
         let cs = NSCharacterSet.whitespaceAndNewlineCharacterSet()
@@ -234,6 +238,10 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
     
     func applicationWillResignActive(aNotification: NSNotification?) {
         saveFile()
+    }
+    
+    func contentSizeCategoryDidCHange(aNotification: NSNotification?) {
+        setFont()
     }
 
 }
