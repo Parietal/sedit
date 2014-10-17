@@ -79,6 +79,10 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         self.title = ""
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        saveFile()
+    }
     
     // MARK:
 
