@@ -57,7 +57,7 @@ class PreferencesViewController: UITableViewController {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }
 
-        cell!.textLabel?.text = "NOTHING TO DO"
+        cell!.textLabel.text = "NOTHING TO DO"
 
         return cell!
     }

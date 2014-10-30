@@ -159,7 +159,7 @@ class MainViewController: UITableViewController {
             cell!.accessoryType = .None
         }
         
-        cell!.textLabel!.text = file.stringByDeletingPathExtension
+        cell!.textLabel.text = file.stringByDeletingPathExtension
         cell!.detailTextLabel!.textColor = UIColor.darkGrayColor()
         
         return cell!

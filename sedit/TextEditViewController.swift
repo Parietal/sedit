@@ -71,9 +71,10 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
     }
 
     override func viewWillDisappear(animated: Bool) {
-        let viewControllers = self.navigationController!.viewControllers as NSArray
-        if !viewControllers.containsObject(self) {
-            saveFile()
+        if let viewControllers = self.navigationController?.viewControllers? as NSArray? {
+            if !viewControllers.containsObject(self) {
+                saveFile()
+            }
         }
         super.viewWillDisappear(animated)
         self.title = ""
@@ -133,7 +134,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         let defaultString = "\n\n\n\n"
         dirty = false
         updateDirtyState()
-        let result = truncateString(String.stringWithContentsOfFile(currentFilePath, encoding: NSUTF8StringEncoding, error: &error)!)
+        let result = truncateString(String(contentsOfFile: currentFilePath, encoding: NSUTF8StringEncoding, error: &error)!)
         textHash = result.sha256().base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
         return result + defaultString
     }
@@ -179,7 +180,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
     func navigationItemActionClick(sender: AnyObject?) {
         saveFile()
         
-        documentInteractionController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: currentFilePath))
+        documentInteractionController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: currentFilePath)!)
         documentInteractionController!.presentOptionsMenuFromBarButtonItem(sender! as UIBarButtonItem, animated: true)
     }
 

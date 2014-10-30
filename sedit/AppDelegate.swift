@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let files = NSFileManager.defaultManager().contentsOfDirectoryAtPath(AppDelegate.applicationDocumentsDirectory.path!, error: nil)
         if files?.count == 0 {
             let srcPath = NSBundle.mainBundle().pathForResource("sample", ofType: "txt")
-            let data = String.stringWithContentsOfFile(srcPath!, encoding: NSUTF8StringEncoding, error: nil)
+            let data = String(contentsOfFile: srcPath!, encoding: NSUTF8StringEncoding, error: nil)
             data?.writeToFile(AppDelegate.applicationDocumentsDirectory.path!.stringByAppendingPathComponent("sample.txt"), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         }
         
