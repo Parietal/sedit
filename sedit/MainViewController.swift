@@ -42,7 +42,7 @@ class MainViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.toolbarItems = [
-                UIBarButtonItem(title: "Preferences", style: .Plain, target: self, action: "toolbarPreferencesClick:"),
+                UIBarButtonItem(title: "⚙", style: .Plain, target: self, action: "toolbarPreferencesClick:"),
                 UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         ]
 
