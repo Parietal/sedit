@@ -13,16 +13,16 @@ class ExtendedKeyboard: UIToolbar {
     weak var textView: UITextView!
     
     init(textView: UITextView) {
-        super.init(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
+        super.init(frame: CGRect(x: 0, y: 0, width: 320, height: 32))
         self.textView = textView
 
         //self.barTintColor = UIColor.lightGrayColor()
         self.tintColor = UIColor.blackColor()
 
         self.items = [
-            UIBarButtonItem(title: "TAB", style: .Plain, target: self, action: "toolbarTabClick:"),
+            UIBarButtonItem(image: UIImage(named: "ic_keyboard_tab_black_24dp"), style: .Plain, target: self, action: "toolbarTabClick:"),
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "X", style: .Plain, target: self, action: "toolbarCloseClick:")
+            UIBarButtonItem(image: UIImage(named: "ic_keyboard_hide_black_24dp"), style: .Plain, target: self, action: "toolbarCloseClick:")
         ]
     
     }

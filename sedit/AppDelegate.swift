@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.scheme == "file" {
             let localPath = url.path?.lowercaseString as NSString?
             if (localPath?.containsString("/inbox/") != nil) {
-                self.openPath("/Inbox/"+url.lastPathComponent)
+                self.openPath("/Inbox/"+url.lastPathComponent!)
                 return true
             }
         }

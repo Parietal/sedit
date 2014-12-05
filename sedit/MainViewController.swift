@@ -15,7 +15,7 @@ class MainViewController: UITableViewController {
     var files: [String!]?
 
     init(path: String!) {
-        super.init(style: .Plain)
+        super.init(style: .Grouped)
         
         let base = AppDelegate.applicationDocumentsDirectory.path!
         if let lpc = path? {
@@ -42,8 +42,8 @@ class MainViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.toolbarItems = [
-                UIBarButtonItem(title: "⚙", style: .Plain, target: self, action: "toolbarPreferencesClick:"),
-                UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+            UIBarButtonItem(image: UIImage(named: "ic_settings_black_24dp"), style: .Plain, target: self, action: "toolbarPreferencesClick:"),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
         ]
 
     }
@@ -159,7 +159,7 @@ class MainViewController: UITableViewController {
             cell!.accessoryType = .None
         }
         
-        cell!.textLabel.text = file.stringByDeletingPathExtension
+        cell!.textLabel!.text = file.stringByDeletingPathExtension
         cell!.detailTextLabel!.textColor = UIColor.darkGrayColor()
         
         return cell!

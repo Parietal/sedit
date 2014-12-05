@@ -12,6 +12,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
 
     let currentFilePath: String!
     var textView: UITextView!
+    var isReadOnly = false
     
     var dirty = false
     var textHash: String? = nil
@@ -34,6 +35,12 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         currentFilePath = path
     }
 
+    init(path: String, isReadOnly ro: Bool) {
+        super.init()
+        currentFilePath = path
+        isReadOnly = ro
+    }
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -49,7 +56,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
 
         textView = UITextView(frame: rectForTextView(self.view.bounds))
         textView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-        textView.editable = true
+        textView.editable = !isReadOnly
         textView.alwaysBounceVertical = true
         textView.backgroundColor = UIColor.whiteColor()
         textView.textColor = UIColor.blackColor()
@@ -61,13 +68,17 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         self.view.addSubview(textView)
         setFont()
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "navigationItemActionClick:")
+        if !isReadOnly {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "navigationItemActionClick:")
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         updateDirtyState()
-        textView.becomeFirstResponder()
+        if !isReadOnly {
+            textView.becomeFirstResponder()
+        }
     }
 
     override func viewWillDisappear(animated: Bool) {

@@ -13,7 +13,7 @@ class PreferencesViewController: UITableViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
-    
+
     override init() {
         super.init(style: .Grouped)
     }
@@ -29,9 +29,16 @@ class PreferencesViewController: UITableViewController {
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+    }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.title = "Settings"
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.title = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,14 +57,14 @@ class PreferencesViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // TODO: more modern method
+        // TODO: modern method
         let cellIdentifier = "cell"
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell?
         if cell == nil {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }
 
-        cell!.textLabel.text = "NOTHING TO DO"
+        cell!.textLabel!.text = "Open Souce License"
 
         return cell!
     }
@@ -66,4 +73,9 @@ class PreferencesViewController: UITableViewController {
         return "GENERAL"
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let srcPath = NSBundle.mainBundle().pathForResource("license", ofType: "txt")
+        self.navigationController!.pushViewController(TextEditViewController(path: srcPath!, isReadOnly: true), animated: true)
+    }
+    
 }
