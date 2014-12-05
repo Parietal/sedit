@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = RootViewController(rootViewController: MainViewController(path: nil))
+        self.window?.rootViewController = RootViewController(rootViewController: VirtualFolderViewController())
         self.window?.makeKeyAndVisible()
         
         return true
@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func openPath(path: String) -> Bool {
         //  TODO:
-        var viewControllers: [AnyObject] = [MainViewController(path: nil)]
+        var viewControllers: [AnyObject] = [VirtualFolderViewController()]
         var lastVc = TextEditViewController(path: AppDelegate.applicationDocumentsDirectory.path! + path)
         
         let rootViewController = self.window?.rootViewController as RootViewController!

@@ -1,32 +1,24 @@
 //
-//  MainViewController.swift
+//  VirtualFolderContentViewController.swift
 //  sedit
 //
-//  Created by Nerry Kitazato on 2014/08/31.
+//  Created by Nerry Kitazato on 2014/12/06.
 //  Copyright (c) 2014年 Nerry Kitazato. All rights reserved.
 //
 
 import UIKit
 
-class MainViewController: UITableViewController {
+class VirtualFolderContentViewController: UITableViewController {
 
-    var cwd: NSString!
-    var rel_cwd: NSString!
-    var files: [String!]?
-
-    init(path: String!) {
+    var cwd: VirtualFolder!
+    var files: [String]?
+    
+    init(folder: VirtualFolder) {
         super.init(style: .Grouped)
         
-        let base = AppDelegate.applicationDocumentsDirectory.path!
-        if let lpc = path? {
-            self.cwd = base + lpc
-            self.rel_cwd = lpc
-        }else{
-            self.cwd = base
-            self.rel_cwd = ""
-        }
+        cwd = folder
     }
-
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -34,45 +26,45 @@ class MainViewController: UITableViewController {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        self.toolbarItems = [
-            UIBarButtonItem(image: UIImage(named: "ic_settings_black_24dp"), style: .Plain, target: self, action: "toolbarPreferencesClick:"),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        ]
 
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.title = self.rel_cwd
+        self.title = cwd.name
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.title = ""
     }
-    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     func navigationItemAddClick(sender: AnyObject?){
         let fm = NSFileManager.defaultManager()
-        let newFilePath = cwd!.stringByAppendingPathComponent("Untitled.txt")
+        let newFilePath = cwd.realPath.stringByAppendingPathComponent("Untitled.txt")
         if !fm.fileExistsAtPath(newFilePath) {
             let result = fm.createFileAtPath(newFilePath, contents: nil, attributes: nil)
         }else{
             for(var i=1; i<9999; i++){
-                let newFilePath = cwd!.stringByAppendingPathComponent("Untitled \(i).txt")
+                let newFilePath = cwd.realPath.stringByAppendingPathComponent("Untitled \(i).txt")
                 if !fm.fileExistsAtPath(newFilePath) {
                     let result = fm.createFileAtPath(newFilePath, contents: nil, attributes: nil)
                     break;
                 }
             }
         }
-
+        
         checkReload(true)
     }
     
@@ -80,7 +72,7 @@ class MainViewController: UITableViewController {
         super.viewWillAppear(animated)
         checkReload(true)
     }
-    
+
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         if editing {
@@ -91,46 +83,48 @@ class MainViewController: UITableViewController {
     }
     
     func checkReload(reload: Bool) -> Bool {
-
         var result = true
-        
-        // TODO: dynamic reload
-        
-        let dir = NSFileManager.defaultManager().contentsOfDirectoryAtPath(cwd!, error: nil) as? [String!]
-        files = dir?.sorted() { (s1, s2) -> Bool in
-            return s1.stringByDeletingPathExtension.compare(s2.stringByDeletingPathExtension, options: .CaseInsensitiveSearch | .NumericSearch, range: nil, locale: NSLocale.systemLocale()) == NSComparisonResult.OrderedAscending
-        }
-
+        files = cwd.reloadContents()
         if(result && reload) {
             tableView.reloadData()
         }
-        
         return result
     }
-    
-    
-    func toolbarPreferencesClick(aNotification: NSNotification?) {
-        self.navigationController?.pushViewController(PreferencesViewController(), animated: true)
-    }
-    
 
-    
     // MARK: - Table view data source
-    
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (files != nil) {
-            return files!.count
+        if let files = files? {
+            return files.count
         }else{
             return 0
         }
     }
 
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (files?.count > 0) {
+            return nil
+        }else{
+            return "THIS FOLDER IS EMPTY"
+        }
+    }
+    
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
 
+        // Configure the cell...
+
+        return cell
+    }
+    */
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         // TODO: more modern method
         let cellIdentifier = "cell"
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell?
@@ -138,53 +132,54 @@ class MainViewController: UITableViewController {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }
         
-        let file = files![indexPath.row]
-        
-        if let attrs = NSFileManager.defaultManager().attributesOfItemAtPath(cwd!.stringByAppendingPathComponent(file), error: nil) as NSDictionary? {
-            let filesize = attrs.fileSize()
-            let filetype = attrs.fileType()
-            let isDir = (filetype == NSFileTypeDirectory)
-           
-            cell!.detailTextLabel!.text =
-                filesize>0 ? "\( filesize ) bytes" : "Empty"
-            
-            if isDir {
-                cell!.accessoryType = .DisclosureIndicator
+        if let file = files?[indexPath.row] {
+            if let attrs = NSFileManager.defaultManager().attributesOfItemAtPath(cwd.realPath.stringByAppendingPathComponent(file), error: nil) as NSDictionary? {
+                let filesize = attrs.fileSize()
+                let filetype = attrs.fileType()
+                let isDir = (filetype == NSFileTypeDirectory)
+                
+                cell!.detailTextLabel!.text =
+                    filesize>0 ? "\( filesize ) bytes" : "Empty"
+                
+                if isDir {
+                    cell!.accessoryType = .DisclosureIndicator
+                }else{
+                    cell!.accessoryType = .None
+                }
+                
             }else{
+                cell!.detailTextLabel?.text = ""
                 cell!.accessoryType = .None
             }
             
-        }else{
-            cell!.detailTextLabel?.text = ""
-            cell!.accessoryType = .None
+            cell!.textLabel!.text = file.stringByDeletingPathExtension
+            cell!.detailTextLabel!.textColor = UIColor.darkGrayColor()
         }
-        
-        cell!.textLabel!.text = file.stringByDeletingPathExtension
-        cell!.detailTextLabel!.textColor = UIColor.darkGrayColor()
         
         return cell!
     }
-
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let lpc = files![indexPath.row]
-        let file = cwd?.stringByAppendingPathComponent(lpc)
-        let attrs = NSFileManager.defaultManager().attributesOfItemAtPath(file!, error: nil) as NSDictionary?
-        if attrs?.fileType() == NSFileTypeDirectory {
-            self.navigationController!.pushViewController(MainViewController(path: self.rel_cwd+"/"+lpc), animated: true)
-        }else{
-            self.navigationController!.pushViewController(TextEditViewController(path: file!), animated: true)
+        if let lpc = files?[indexPath.row] {
+            let file = cwd.realPath.stringByAppendingPathComponent(lpc)
+            let attrs = NSFileManager.defaultManager().attributesOfItemAtPath(file, error: nil) as NSDictionary?
+            if attrs?.fileType() == NSFileTypeDirectory {
+                //self.navigationController!.pushViewController(MainViewController(path: self.rel_cwd+"/"+lpc), animated: true)
+            }else{
+                self.navigationController!.pushViewController(TextEditViewController(path: file), animated: true)
+            }
         }
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
-
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let file = cwd?.stringByAppendingPathComponent(files![indexPath.row])
+        let file = cwd.realPath.stringByAppendingPathComponent(files![indexPath.row])
         if editingStyle == .Delete {
             var error: NSError?
-            NSFileManager.defaultManager().removeItemAtPath(file!, error: &error)
+            NSFileManager.defaultManager().removeItemAtPath(file, error: &error)
             if (error != nil) {
                 NSLog("\(__FUNCTION__): %@", error!)
             }else{
@@ -193,7 +188,7 @@ class MainViewController: UITableViewController {
             }
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
 
 }
