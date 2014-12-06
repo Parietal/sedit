@@ -10,16 +10,8 @@ import UIKit
 
 class VirtualFolderViewController: UITableViewController {
     
-    var folders: [VirtualFolder]!
-    
     override init() {
         super.init(style: .Grouped)
-        
-        let base = AppDelegate.applicationDocumentsDirectory.path!
-        
-        folders = []
-        folders!.append(VirtualFolder(name: "Inbox", realPath: base.stringByAppendingPathComponent("/Inbox"), options: ["icon": "ic_inbox_black_24dp"]))
-        folders!.append(VirtualFolder(name: "Documents", realPath: base, options: nil))
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -54,9 +46,7 @@ class VirtualFolderViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        for folder in folders {
-            folder.invalidate()
-        }
+        VirtualFolderManager.defaultManager.invalidate()
         tableView.reloadData()
     }
     
@@ -67,7 +57,7 @@ class VirtualFolderViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return folders!.count
+        return VirtualFolderManager.defaultManager.count()
     }
     
     /*
@@ -89,18 +79,15 @@ class VirtualFolderViewController: UITableViewController {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }
         
-        if let folder = folders?[indexPath.row] {
-            cell!.imageView?.image = UIImage(named: folder.prefferedIcon)
+        if let folder = VirtualFolderManager.defaultManager[indexPath.row] {
+            cell!.imageView?.image = UIImage(named: folder.icon)
             cell!.accessoryType = .DisclosureIndicator
             
-            var n_files = 0
-            if let files = folder.contentsOfFolder() {
-                n_files = files.count
-            }
-            if n_files > 1 {
-                cell!.detailTextLabel!.text = "\( n_files ) Files"
-            }else if n_files > 0 {
-                cell!.detailTextLabel!.text = "1 File"
+            var n = folder.count()
+            if n > 1 {
+                cell!.detailTextLabel!.text = "\( n ) files"
+            }else if n > 0 {
+                cell!.detailTextLabel!.text = "1 file"
             }else{
                 cell!.detailTextLabel!.text = "Empty"
             }
@@ -113,7 +100,7 @@ class VirtualFolderViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let folder = folders?[indexPath.row] {
+        if let folder = VirtualFolderManager.defaultManager[indexPath.row] {
             self.navigationController?.pushViewController(VirtualFolderContentViewController(folder: folder), animated: true)
         }
     }

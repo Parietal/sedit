@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C008BDB419CC75FE005FEF71 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C008BDB319CC75FE005FEF71 /* Images.xcassets */; };
 		C008BDE419CC765D005FEF71 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C008BDE319CC765D005FEF71 /* LaunchScreen.xib */; };
+		C02336D51A3266980051ADDA /* VirtualFolderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02336D41A3266980051ADDA /* VirtualFolderManager.swift */; };
+		C02336D71A327DCA0051ADDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02336D61A327DCA0051ADDA /* Images.xcassets */; };
 		C02FF7D71A3240620080151F /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = C02FF7D61A3240620080151F /* license.txt */; };
 		C02FF7D91A324E7A0080151F /* VirtualFolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02FF7D81A324E7A0080151F /* VirtualFolderViewController.swift */; };
 		C02FF7DB1A3250940080151F /* VirtualFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02FF7DA1A3250940080151F /* VirtualFolder.swift */; };
@@ -34,8 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C008BDB319CC75FE005FEF71 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C008BDE319CC765D005FEF71 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		C02336D41A3266980051ADDA /* VirtualFolderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualFolderManager.swift; sourceTree = "<group>"; };
+		C02336D61A327DCA0051ADDA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C02FF7D61A3240620080151F /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		C02FF7D81A324E7A0080151F /* VirtualFolderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualFolderViewController.swift; sourceTree = "<group>"; };
 		C02FF7DA1A3250940080151F /* VirtualFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualFolder.swift; sourceTree = "<group>"; };
@@ -96,8 +98,9 @@
 			children = (
 				C0E240B419B32344007EB93B /* AppDelegate.swift */,
 				C0E240D119B32401007EB93B /* RootViewController.swift */,
-				C02FF7D81A324E7A0080151F /* VirtualFolderViewController.swift */,
+				C02336D41A3266980051ADDA /* VirtualFolderManager.swift */,
 				C02FF7DA1A3250940080151F /* VirtualFolder.swift */,
+				C02FF7D81A324E7A0080151F /* VirtualFolderViewController.swift */,
 				C02FF7DC1A3257620080151F /* VirtualFolderContentViewController.swift */,
 				C0E240D519B32EE3007EB93B /* TextEditViewController.swift */,
 				C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */,
@@ -107,7 +110,7 @@
 				C02FF7D61A3240620080151F /* license.txt */,
 				C0E240B219B32344007EB93B /* Supporting Files */,
 				C0E240DB19B385E3007EB93B /* sedit-Bridging-Header.h */,
-				C008BDB319CC75FE005FEF71 /* Images.xcassets */,
+				C02336D61A327DCA0051ADDA /* Images.xcassets */,
 				C008BDE319CC765D005FEF71 /* LaunchScreen.xib */,
 			);
 			path = sedit;
@@ -224,9 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C02FF7D71A3240620080151F /* license.txt in Resources */,
+				C02336D71A327DCA0051ADDA /* Images.xcassets in Resources */,
 				C0927C5319B880C800123554 /* sample.txt in Resources */,
 				C008BDE419CC765D005FEF71 /* LaunchScreen.xib in Resources */,
-				C008BDB419CC75FE005FEF71 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +252,7 @@
 				C0927C5119B8768900123554 /* PreferencesViewController.swift in Sources */,
 				C0E240D619B32EE3007EB93B /* TextEditViewController.swift in Sources */,
 				C0E240D219B32401007EB93B /* RootViewController.swift in Sources */,
+				C02336D51A3266980051ADDA /* VirtualFolderManager.swift in Sources */,
 				C02FF7DD1A3257620080151F /* VirtualFolderContentViewController.swift in Sources */,
 				C0E240D819B33B21007EB93B /* String+SHA256.swift in Sources */,
 				C0E240B519B32344007EB93B /* AppDelegate.swift in Sources */,

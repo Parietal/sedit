@@ -11,7 +11,6 @@ import UIKit
 class VirtualFolderContentViewController: UITableViewController {
 
     var cwd: VirtualFolder!
-    var files: [String]?
     
     init(folder: VirtualFolder) {
         super.init(style: .Grouped)
@@ -76,7 +75,7 @@ class VirtualFolderContentViewController: UITableViewController {
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         if editing {
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "navigationItemAddClick:")
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_note_add_black_24dp"), style: .Plain, target: self, action: "navigationItemAddClick:")
         }else{
             self.navigationItem.leftBarButtonItem = nil
         }
@@ -84,7 +83,7 @@ class VirtualFolderContentViewController: UITableViewController {
     
     func checkReload(reload: Bool) -> Bool {
         var result = true
-        files = cwd.reloadContents()
+        cwd.invalidate()
         if(result && reload) {
             tableView.reloadData()
         }
@@ -98,15 +97,11 @@ class VirtualFolderContentViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let files = files? {
-            return files.count
-        }else{
-            return 0
-        }
+        return cwd.count()
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if (files?.count > 0) {
+        if cwd.count() > 0 {
             return nil
         }else{
             return "THIS FOLDER IS EMPTY"
@@ -132,8 +127,9 @@ class VirtualFolderContentViewController: UITableViewController {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }
         
-        if let file = files?[indexPath.row] {
-            if let attrs = NSFileManager.defaultManager().attributesOfItemAtPath(cwd.realPath.stringByAppendingPathComponent(file), error: nil) as NSDictionary? {
+        if let file = cwd[indexPath.row] {
+            let path = cwd.realPath(indexPath.row)!
+            if let attrs = NSFileManager.defaultManager().attributesOfItemAtPath(path, error: nil) as NSDictionary? {
                 let filesize = attrs.fileSize()
                 let filetype = attrs.fileType()
                 let isDir = (filetype == NSFileTypeDirectory)
@@ -144,6 +140,7 @@ class VirtualFolderContentViewController: UITableViewController {
                 if isDir {
                     cell!.accessoryType = .DisclosureIndicator
                 }else{
+                    cell!.imageView!.image = UIImage(named: "ic_description_black_24dp")
                     cell!.accessoryType = .None
                 }
                 
@@ -160,13 +157,12 @@ class VirtualFolderContentViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let lpc = files?[indexPath.row] {
-            let file = cwd.realPath.stringByAppendingPathComponent(lpc)
-            let attrs = NSFileManager.defaultManager().attributesOfItemAtPath(file, error: nil) as NSDictionary?
+        if let path = cwd.realPath(indexPath.row) {
+            let attrs = NSFileManager.defaultManager().attributesOfItemAtPath(path, error: nil) as NSDictionary?
             if attrs?.fileType() == NSFileTypeDirectory {
                 //self.navigationController!.pushViewController(MainViewController(path: self.rel_cwd+"/"+lpc), animated: true)
             }else{
-                self.navigationController!.pushViewController(TextEditViewController(path: file), animated: true)
+                self.navigationController!.pushViewController(TextEditViewController(path: path), animated: true)
             }
         }
     }
@@ -176,18 +172,19 @@ class VirtualFolderContentViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let file = cwd.realPath.stringByAppendingPathComponent(files![indexPath.row])
-        if editingStyle == .Delete {
-            var error: NSError?
-            NSFileManager.defaultManager().removeItemAtPath(file, error: &error)
-            if (error != nil) {
-                NSLog("\(__FUNCTION__): %@", error!)
-            }else{
-                checkReload(false)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        if let path = cwd.realPath(indexPath.row) {
+            if editingStyle == .Delete {
+                var error: NSError?
+                NSFileManager.defaultManager().removeItemAtPath(path, error: &error)
+                if (error != nil) {
+                    NSLog("\(__FUNCTION__): %@", error!)
+                }else{
+                    checkReload(false)
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
+            } else if editingStyle == .Insert {
+                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
             }
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
 
