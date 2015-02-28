@@ -10,7 +10,7 @@ import UIKit
 
 class TextEditViewController: UIViewController, UITextViewDelegate {
 
-    let currentFilePath: String!
+    var currentFilePath: String?
     var textView: UITextView!
     var isReadOnly = false
     
@@ -82,7 +82,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
     }
 
     override func viewWillDisappear(animated: Bool) {
-        if let viewControllers = self.navigationController?.viewControllers? as NSArray? {
+        if let viewControllers = self.navigationController?.viewControllers as NSArray? {
             if !viewControllers.containsObject(self) {
                 saveFile()
             }
@@ -145,7 +145,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         let defaultString = "\n\n\n\n"
         dirty = false
         updateDirtyState()
-        let result = truncateString(String(contentsOfFile: currentFilePath, encoding: NSUTF8StringEncoding, error: &error)!)
+        let result = truncateString(String(contentsOfFile: currentFilePath!, encoding: NSUTF8StringEncoding, error: &error)!)
         textHash = result.sha256().base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
         return result + defaultString
     }
@@ -156,7 +156,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
             let text = truncateString(textView.text)
             let newHash = text.sha256().base64EncodedStringWithOptions(NSDataBase64EncodingOptions(0))
             if newHash != textHash {
-                text.writeToFile(currentFilePath, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+                text.writeToFile(currentFilePath!, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
                 if error != nil {
                     return error
                 }
@@ -170,7 +170,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
     }
     
     func updateDirtyState() {
-        let filename = currentFilePath.lastPathComponent.stringByDeletingPathExtension
+        let filename = currentFilePath!.lastPathComponent.stringByDeletingPathExtension
         if(dirty){
             self.title = filename + " *"
         }else{
@@ -191,8 +191,8 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
     func navigationItemActionClick(sender: AnyObject?) {
         saveFile()
         
-        documentInteractionController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: currentFilePath)!)
-        documentInteractionController!.presentOptionsMenuFromBarButtonItem(sender! as UIBarButtonItem, animated: true)
+        documentInteractionController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: currentFilePath!)!)
+        documentInteractionController!.presentOptionsMenuFromBarButtonItem(sender! as! UIBarButtonItem, animated: true)
     }
 
     
@@ -223,7 +223,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
                     break
                 }
             }
-            textView.replaceRange(textView.selectedTextRange!, withText: replaceString)
+            textView.replaceRange(textView.selectedTextRange!, withText: replaceString as String)
             textView.selectedRange = newRange
             textView.scrollRangeToVisible(newRange)
             self.textViewDidChange(textView)
@@ -239,7 +239,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
     func keyboardWillShow(aNotification: NSNotification?) {
         
         let userInfo = aNotification?.userInfo as NSDictionary!
-        let keyFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as NSValue
+        let keyFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
         let keyboardRect = self.view.convertRect(keyFrame.CGRectValue(), fromView: nil)
         
         var baseRect = self.view.bounds

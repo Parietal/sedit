@@ -18,10 +18,6 @@ class VirtualFolderContentViewController: UITableViewController {
         cwd = folder
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -122,7 +118,7 @@ class VirtualFolderContentViewController: UITableViewController {
         
         // TODO: more modern method
         let cellIdentifier = "cell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell?
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell?
         if cell == nil {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }

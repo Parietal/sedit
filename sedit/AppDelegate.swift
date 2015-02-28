@@ -16,12 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     class var applicationDocumentsDirectory: NSURL {
         get {
             let fm = NSFileManager.defaultManager()
-            return fm.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as NSURL
+            return fm.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as! NSURL
         }
     }
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary) -> Bool {
-        
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+    
         let files = NSFileManager.defaultManager().contentsOfDirectoryAtPath(AppDelegate.applicationDocumentsDirectory.path!, error: nil)
         if files?.count == 0 {
             let srcPath = NSBundle.mainBundle().pathForResource("sample", ofType: "txt")
@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var viewControllers: [AnyObject] = [VirtualFolderViewController()]
         var lastVc = TextEditViewController(path: AppDelegate.applicationDocumentsDirectory.path! + path)
         
-        let rootViewController = self.window?.rootViewController as RootViewController!
+        let rootViewController = self.window?.rootViewController as! RootViewController!
         rootViewController.viewControllers = viewControllers
         rootViewController.pushViewController(lastVc, animated: true)
         

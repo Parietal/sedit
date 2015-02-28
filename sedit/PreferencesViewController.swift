@@ -10,11 +10,7 @@ import UIKit
 
 class PreferencesViewController: UITableViewController {
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
-    override init() {
+    init() {
         super.init(style: .Grouped)
     }
 
@@ -59,7 +55,7 @@ class PreferencesViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // TODO: modern method
         let cellIdentifier = "cell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell?
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell?
         if cell == nil {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }

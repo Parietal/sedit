@@ -10,12 +10,8 @@ import UIKit
 
 class VirtualFolderViewController: UITableViewController {
     
-    override init() {
+    init() {
         super.init(style: .Grouped)
-    }
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -74,7 +70,7 @@ class VirtualFolderViewController: UITableViewController {
         
         // TODO: more modern method
         let cellIdentifier = "cell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell?
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! UITableViewCell?
         if cell == nil {
             cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }

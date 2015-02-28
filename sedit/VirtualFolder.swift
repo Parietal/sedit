@@ -20,7 +20,7 @@ class VirtualFolder {
         self.name = name
         self.realPath = realPath
         
-        if let options = options? {
+        if let options = options {
             if let prefferedIcon = options["icon"] {
                 self.icon = prefferedIcon
             }
