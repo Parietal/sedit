@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
@@ -20,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    class func presentPopoverMenu() {
+        PopoverMenuManager.defaultManager.presentPopoverMenu(VirtualFolderViewController())
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
     
         let files = NSFileManager.defaultManager().contentsOfDirectoryAtPath(AppDelegate.applicationDocumentsDirectory.path!, error: nil)
@@ -30,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = RootViewController(rootViewController: VirtualFolderViewController())
+        self.window?.rootViewController = RootViewController(rootViewController: TextEditViewController(path: "/rsrc/welcome.txt"))
         self.window?.makeKeyAndVisible()
         
         return true
@@ -69,14 +74,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK:
     
+    class func openPath(path: String) -> Bool {
+        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+            return appDelegate.openPath(path)
+        }
+        return false
+    }
+    
     func openPath(path: String) -> Bool {
         //  TODO:
-        var viewControllers: [AnyObject] = [VirtualFolderViewController()]
-        var lastVc = TextEditViewController(path: AppDelegate.applicationDocumentsDirectory.path! + path)
-        
         let rootViewController = self.window?.rootViewController as! RootViewController!
-        rootViewController.viewControllers = viewControllers
-        rootViewController.pushViewController(lastVc, animated: true)
+        var vc = TextEditViewController(path: path)
+        rootViewController.viewControllers = [vc]
         
         return true
     }

@@ -20,10 +20,13 @@ class RootViewController: UINavigationController {
             NSForegroundColorAttributeName: UIColor.whiteColor()
         ]
         
+        /*
         toolbarHidden = false
         toolbar.translucent = navigationBar.translucent
         toolbar.barTintColor = navigationBar.barTintColor
         toolbar.tintColor = navigationBar.tintColor
+        */
+
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

@@ -13,23 +13,37 @@ class VirtualFolder {
     var name: String!
     var realPath: String!
     var icon: String!
+    var hidden = false, omittable = false, addable = false, readOnly = false
 
     private var files: [String]?
     
-    init(name: String, realPath: String, options: [String: String]?) {
-        self.name = name
-        self.realPath = realPath
-        
-        if let options = options {
-            if let prefferedIcon = options["icon"] {
-                self.icon = prefferedIcon
-            }
+    init(options: [String: AnyObject]) {
+        if let s = options["name"] as? String {
+            self.name = s
+        }
+        if let s = options["path"] as? String {
+            self.realPath = s
+        }
+        if let s = options["icon"] as? String {
+            self.icon = s
+        }
+        if let flag = options["hidden"] as? Bool {
+            self.hidden = flag
+        }
+        if let flag = options["omittable"] as? Bool {
+            self.omittable = flag
+        }
+        if let flag = options["addable"] as? Bool {
+            self.addable = flag
+        }
+        if let flag = options["readOnly"] as? Bool {
+            self.readOnly = flag
         }
         
-        if icon == nil {
-            icon = "ic_folder_black_24dp"
+        if self.icon == nil {
+            self.icon = "ic_folder_black_24dp"
         }
-    
+        
     }
 
     func invalidate() {

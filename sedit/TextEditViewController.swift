@@ -10,6 +10,7 @@ import UIKit
 
 class TextEditViewController: UIViewController, UITextViewDelegate {
 
+    var currentPath: VirtualFolder?
     var currentFilePath: String?
     var textView: UITextView!
     var isReadOnly = false
@@ -27,18 +28,23 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "applicationWillResignActive:", name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "contentSizeCategoryDidCHange:", name: UIContentSizeCategoryDidChangeNotification, object: nil)
 
-
     }
     
     init(path: String) {
         super.init()
-        currentFilePath = path
+        setOpenFilePath(path)
     }
 
-    init(path: String, isReadOnly ro: Bool) {
-        super.init()
-        currentFilePath = path
-        isReadOnly = ro
+    func setOpenFilePath(path: String) {
+        if let r = VirtualFolderManager.defaultManager.resolv(path) {
+            currentPath = r.path
+            currentFilePath = r.path.realPath.stringByAppendingPathComponent(r.file)
+            isReadOnly = r.path.readOnly
+        }else{
+            currentPath = nil
+            currentFilePath = nil
+            isReadOnly = false
+        }
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -46,6 +52,7 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
     }
 
     deinit {
+        saveFile()
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
@@ -68,10 +75,17 @@ class TextEditViewController: UIViewController, UITextViewDelegate {
         self.view.addSubview(textView)
         setFont()
 
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_menu_black_24dp"), style: .Plain, target: self, action: "toolbarMenuClick:")
+
         if !isReadOnly {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "navigationItemActionClick:")
         }
     }
+
+    func toolbarMenuClick(aNotification: NSNotification?) {
+        AppDelegate.presentPopoverMenu()
+    }
+    
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

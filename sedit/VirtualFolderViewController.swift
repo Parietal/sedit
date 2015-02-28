@@ -29,12 +29,18 @@ class VirtualFolderViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_settings_black_24dp"), style: .Plain, target: self, action: "toolbarSettingsClick:")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_menu_black_24dp"), style: .Plain, target: self, action: "toolbarMenuClick:")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_settings_black_24dp"), style: .Plain, target: self, action: "toolbarSettingsClick:")
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func toolbarMenuClick(aNotification: NSNotification?) {
+        PopoverMenuManager.defaultManager.dismissPopoverMenu()
     }
     
     func toolbarSettingsClick(aNotification: NSNotification?) {
@@ -93,6 +99,10 @@ class VirtualFolderViewController: UITableViewController {
         }
         
         return cell!
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "FOLDERS"
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

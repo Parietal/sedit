@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84078F621AA001F900649BD8 /* PopoverMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84078F611AA001F900649BD8 /* PopoverMenuManager.swift */; };
+		84D574501A9F01C700F1F345 /* PopoverMenuWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D5744F1A9F01C700F1F345 /* PopoverMenuWindow.swift */; };
+		84D574521A9F04B000F1F345 /* PopoverMenuRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D574511A9F04B000F1F345 /* PopoverMenuRootViewController.swift */; };
 		C008BDE419CC765D005FEF71 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C008BDE319CC765D005FEF71 /* LaunchScreen.xib */; };
 		C02336D51A3266980051ADDA /* VirtualFolderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02336D41A3266980051ADDA /* VirtualFolderManager.swift */; };
 		C02336D71A327DCA0051ADDA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C02336D61A327DCA0051ADDA /* Images.xcassets */; };
@@ -14,6 +17,7 @@
 		C02FF7D91A324E7A0080151F /* VirtualFolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02FF7D81A324E7A0080151F /* VirtualFolderViewController.swift */; };
 		C02FF7DB1A3250940080151F /* VirtualFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02FF7DA1A3250940080151F /* VirtualFolder.swift */; };
 		C02FF7DD1A3257620080151F /* VirtualFolderContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02FF7DC1A3257620080151F /* VirtualFolderContentViewController.swift */; };
+		C041629A1AA08A7D0016C9C2 /* welcome.txt in Resources */ = {isa = PBXBuildFile; fileRef = C04162991AA08A7D0016C9C2 /* welcome.txt */; };
 		C0519ACA19B5513900EA36E0 /* ExtendedKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */; };
 		C0927C5119B8768900123554 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0927C5019B8768900123554 /* PreferencesViewController.swift */; };
 		C0927C5319B880C800123554 /* sample.txt in Resources */ = {isa = PBXBuildFile; fileRef = C0927C5219B880C800123554 /* sample.txt */; };
@@ -35,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84078F611AA001F900649BD8 /* PopoverMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverMenuManager.swift; sourceTree = "<group>"; };
+		84D5744F1A9F01C700F1F345 /* PopoverMenuWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverMenuWindow.swift; sourceTree = "<group>"; };
+		84D574511A9F04B000F1F345 /* PopoverMenuRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverMenuRootViewController.swift; sourceTree = "<group>"; };
 		C008BDE319CC765D005FEF71 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		C02336D41A3266980051ADDA /* VirtualFolderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualFolderManager.swift; sourceTree = "<group>"; };
 		C02336D61A327DCA0051ADDA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -42,6 +49,7 @@
 		C02FF7D81A324E7A0080151F /* VirtualFolderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualFolderViewController.swift; sourceTree = "<group>"; };
 		C02FF7DA1A3250940080151F /* VirtualFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualFolder.swift; sourceTree = "<group>"; };
 		C02FF7DC1A3257620080151F /* VirtualFolderContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualFolderContentViewController.swift; sourceTree = "<group>"; };
+		C04162991AA08A7D0016C9C2 /* welcome.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = welcome.txt; sourceTree = "<group>"; };
 		C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendedKeyboard.swift; sourceTree = "<group>"; };
 		C0927C5019B8768900123554 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C0927C5219B880C800123554 /* sample.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample.txt; sourceTree = "<group>"; };
@@ -75,6 +83,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84078F631AA0025C00649BD8 /* Popover Menu */ = {
+			isa = PBXGroup;
+			children = (
+				84078F611AA001F900649BD8 /* PopoverMenuManager.swift */,
+				84D5744F1A9F01C700F1F345 /* PopoverMenuWindow.swift */,
+				84D574511A9F04B000F1F345 /* PopoverMenuRootViewController.swift */,
+			);
+			name = "Popover Menu";
+			sourceTree = "<group>";
+		};
+		C041629B1AA08B8D0016C9C2 /* Virtual Folders */ = {
+			isa = PBXGroup;
+			children = (
+				C02336D41A3266980051ADDA /* VirtualFolderManager.swift */,
+				C02FF7DA1A3250940080151F /* VirtualFolder.swift */,
+				C02FF7D81A324E7A0080151F /* VirtualFolderViewController.swift */,
+				C02FF7DC1A3257620080151F /* VirtualFolderContentViewController.swift */,
+			);
+			name = "Virtual Folders";
+			sourceTree = "<group>";
+		};
+		C041629C1AA08BA30016C9C2 /* Text Editor Main */ = {
+			isa = PBXGroup;
+			children = (
+				C0E240D519B32EE3007EB93B /* TextEditViewController.swift */,
+				C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */,
+			);
+			name = "Text Editor Main";
+			sourceTree = "<group>";
+		};
+		C041629D1AA08BB20016C9C2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				84078F631AA0025C00649BD8 /* Popover Menu */,
+				C0E240D719B33B21007EB93B /* String+SHA256.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		C041629E1AA08BBB0016C9C2 /* Other View */ = {
+			isa = PBXGroup;
+			children = (
+				C0927C5019B8768900123554 /* PreferencesViewController.swift */,
+			);
+			name = "Other View";
+			sourceTree = "<group>";
+		};
 		C0E240A619B32344007EB93B = {
 			isa = PBXGroup;
 			children = (
@@ -98,16 +153,13 @@
 			children = (
 				C0E240B419B32344007EB93B /* AppDelegate.swift */,
 				C0E240D119B32401007EB93B /* RootViewController.swift */,
-				C02336D41A3266980051ADDA /* VirtualFolderManager.swift */,
-				C02FF7DA1A3250940080151F /* VirtualFolder.swift */,
-				C02FF7D81A324E7A0080151F /* VirtualFolderViewController.swift */,
-				C02FF7DC1A3257620080151F /* VirtualFolderContentViewController.swift */,
-				C0E240D519B32EE3007EB93B /* TextEditViewController.swift */,
-				C0519AC919B5513900EA36E0 /* ExtendedKeyboard.swift */,
-				C0E240D719B33B21007EB93B /* String+SHA256.swift */,
-				C0927C5019B8768900123554 /* PreferencesViewController.swift */,
+				C041629B1AA08B8D0016C9C2 /* Virtual Folders */,
+				C041629C1AA08BA30016C9C2 /* Text Editor Main */,
+				C041629E1AA08BBB0016C9C2 /* Other View */,
+				C041629D1AA08BB20016C9C2 /* Utils */,
 				C0927C5219B880C800123554 /* sample.txt */,
 				C02FF7D61A3240620080151F /* license.txt */,
+				C04162991AA08A7D0016C9C2 /* welcome.txt */,
 				C0E240B219B32344007EB93B /* Supporting Files */,
 				C0E240DB19B385E3007EB93B /* sedit-Bridging-Header.h */,
 				C02336D61A327DCA0051ADDA /* Images.xcassets */,
@@ -228,6 +280,7 @@
 			files = (
 				C02FF7D71A3240620080151F /* license.txt in Resources */,
 				C02336D71A327DCA0051ADDA /* Images.xcassets in Resources */,
+				C041629A1AA08A7D0016C9C2 /* welcome.txt in Resources */,
 				C0927C5319B880C800123554 /* sample.txt in Resources */,
 				C008BDE419CC765D005FEF71 /* LaunchScreen.xib in Resources */,
 			);
@@ -250,9 +303,12 @@
 				C0519ACA19B5513900EA36E0 /* ExtendedKeyboard.swift in Sources */,
 				C02FF7D91A324E7A0080151F /* VirtualFolderViewController.swift in Sources */,
 				C0927C5119B8768900123554 /* PreferencesViewController.swift in Sources */,
+				84D574521A9F04B000F1F345 /* PopoverMenuRootViewController.swift in Sources */,
 				C0E240D619B32EE3007EB93B /* TextEditViewController.swift in Sources */,
 				C0E240D219B32401007EB93B /* RootViewController.swift in Sources */,
+				84078F621AA001F900649BD8 /* PopoverMenuManager.swift in Sources */,
 				C02336D51A3266980051ADDA /* VirtualFolderManager.swift in Sources */,
+				84D574501A9F01C700F1F345 /* PopoverMenuWindow.swift in Sources */,
 				C02FF7DD1A3257620080151F /* VirtualFolderContentViewController.swift in Sources */,
 				C0E240D819B33B21007EB93B /* String+SHA256.swift in Sources */,
 				C0E240B519B32344007EB93B /* AppDelegate.swift in Sources */,
@@ -313,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -350,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -367,7 +423,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = sedit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -389,7 +444,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = sedit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

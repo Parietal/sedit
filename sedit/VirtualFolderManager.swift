@@ -10,14 +10,19 @@ import Foundation
 
 class VirtualFolderManager {
     
-    private var folders: [VirtualFolder]!
+    private var srcFolders: [VirtualFolder]!
+    private var visibleFolders: [VirtualFolder]?
     
     private init() {
         let base = AppDelegate.applicationDocumentsDirectory.path!
-        
-        folders = []
-        folders.append(VirtualFolder(name: "Inbox", realPath: base.stringByAppendingPathComponent("/Inbox"), options: ["icon": "ic_inbox_black_24dp"]))
-        folders.append(VirtualFolder(name: "Documents", realPath: base, options: nil))
+        srcFolders = []
+        for item: [String : AnyObject] in [
+            [ "name": "Inbox", "path": base.stringByAppendingPathComponent("/Inbox"), "icon": "ic_inbox_black_24dp", "readOnly": true, "omittable": true ],
+            [ "name": "Documents", "path": base, "addable": true ],
+            [ "name": "rsrc", "path": NSBundle.mainBundle().resourcePath!, "readOnly": true, "hidden": true ]
+            ] {
+                srcFolders.append(VirtualFolder(options: item))
+        }
     }
     
     class var defaultManager: VirtualFolderManager {
@@ -28,18 +33,44 @@ class VirtualFolderManager {
     }
     
     func invalidate() {
-        for folder in folders {
+        visibleFolders = nil
+        for folder in srcFolders {
             folder.invalidate()
         }
     }
     
+    func getFolders() -> [VirtualFolder]? {
+        if visibleFolders == nil {
+            visibleFolders = []
+            for folder in srcFolders {
+                if folder.hidden || (folder.omittable && folder.count() == 0) {
+                }else{
+                    visibleFolders?.append(folder)
+                }
+            }
+        }
+        return visibleFolders
+    }
+    
     func count() -> Int {
-        return folders.count
+        return getFolders()!.count
     }
     
     subscript(index: Int) -> VirtualFolder? {
-        if index < folders.count {
-            return folders[index]
+        if let folders = getFolders() {
+            if index < folders.count {
+                return folders[index]
+            }
+        }
+        return nil
+    }
+    
+    func resolv(path: String) -> (path: VirtualFolder, file: String)? {
+        let pathComponents = path.pathComponents
+        for folder in srcFolders {
+            if folder.name == pathComponents[1] {
+                return (folder, pathComponents[2])
+            }
         }
         return nil
     }

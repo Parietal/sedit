@@ -70,8 +70,8 @@ class PreferencesViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let srcPath = NSBundle.mainBundle().pathForResource("license", ofType: "txt")
-        self.navigationController!.pushViewController(TextEditViewController(path: srcPath!, isReadOnly: true), animated: true)
+        PopoverMenuManager.defaultManager.dismissPopoverMenu()
+        AppDelegate.openPath("/rsrc/license.txt")
     }
     
 }

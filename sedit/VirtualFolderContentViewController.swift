@@ -70,7 +70,7 @@ class VirtualFolderContentViewController: UITableViewController {
 
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        if editing {
+        if editing && cwd.addable {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "ic_note_add_black_24dp"), style: .Plain, target: self, action: "navigationItemAddClick:")
         }else{
             self.navigationItem.leftBarButtonItem = nil
@@ -158,7 +158,7 @@ class VirtualFolderContentViewController: UITableViewController {
             if attrs?.fileType() == NSFileTypeDirectory {
                 //self.navigationController!.pushViewController(MainViewController(path: self.rel_cwd+"/"+lpc), animated: true)
             }else{
-                self.navigationController!.pushViewController(TextEditViewController(path: path), animated: true)
+                AppDelegate.openPath("/\( cwd.name )/\( path.lastPathComponent )")
             }
         }
     }
